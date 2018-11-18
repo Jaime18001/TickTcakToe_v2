@@ -15,12 +15,11 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title> Tick Tack Toe</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type = "text/javascript" src = "Textbox.js"></script>
         <script type = "text/javascript" src = "serviceconnect.js"></script>
         <script type = "text/javascript" src = "eventhandlers.js"></script>
-        
-     
-        
+
     </head>
     <body id ="bodyid">
         <div>
@@ -109,7 +108,7 @@ and open the template in the editor.
         
         <!--Tic-Tac-Toe-->
         <div>
-        <button id = 'b11' onclick = "f11();"> 11 </button>
+        <button id = 'b11' onclick = "cc('#b11', 'green', 'X');"> 11 </button>
         <style type="text/css">
           #b11 {
             border: none;
@@ -128,7 +127,7 @@ and open the template in the editor.
           }
         </style>
         
-         <button id = 'b12' onclick = "f12();"> 12 </button>
+         <button id = 'b12' onclick = "cc('#b12', 'green', 'X');"> 12 </button>
         <style type="text/css">
           #b12 {
             border: none;
@@ -147,7 +146,7 @@ and open the template in the editor.
           }
         </style>
        
-         <button id = 'b13' onclick = "f13();"> 13 </button>
+         <button id = 'b13' onclick = "cc('#b13', 'green', 'X');"> 13 </button>
         <style type="text/css">
           #b13 {
             border: none;
@@ -167,7 +166,7 @@ and open the template in the editor.
         </style>
       
         
-        <button id = 'b21' onclick = "f21();"> 21 </button>
+        <button id = 'b21' onclick = "cc('#b21', 'green', 'X');"> 21 </button>
         <style type="text/css">
           #b21 {
             border: none;
@@ -186,7 +185,7 @@ and open the template in the editor.
           }
         </style>
       
-         <button id = 'b22' onclick = "f22();">  22 </button>
+         <button id = 'b22' onclick = "cc('#b22', 'green', 'X');">  22 </button>
         <style type="text/css">
           #b22 {
             border: none;
@@ -205,7 +204,7 @@ and open the template in the editor.
           }
         </style>
         
-         <button id = 'b23' onclick = "f23();"> 23 </button>
+         <button id = 'b23' onclick = "cc('#b23', 'green', 'X');"> 23 </button>
         <style type="text/css">
           #b23 {
             border: none;
@@ -225,7 +224,7 @@ and open the template in the editor.
         </style>
         
       
-        <button id = 'b31' onclick = "f31();"> 31 </button>
+        <button id = 'b31' onclick = "cc('#b31', 'green', 'X');"> 31 </button>
         <style type="text/css">
           #b31 {
             border: none;
@@ -244,7 +243,7 @@ and open the template in the editor.
           }
         </style>
         
-         <button id = 'b32' onclick = "f32();"> 32 </button>
+         <button id = 'b32' onclick = "cc('#b32', 'green', 'X');"> 32 </button>
         <style type="text/css">
           #b32 {
             border: none;
@@ -263,7 +262,7 @@ and open the template in the editor.
           }
         </style>
         
-         <button id = 'b33' onclick = "f33();"> 33 </button>
+         <button id = 'b33' onclick = "cc('#b33', 'green', 'X');"> 33 </button>
         <style type="text/css">
           #b33 {
             border: none;

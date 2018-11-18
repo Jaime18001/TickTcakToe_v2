@@ -5,8 +5,7 @@ function setNick()
     document.getElementById("dabutton").disabled = true;
     document.getElementById("textbox").disabled = true;
     let connect = new selectnickname(nickname, "savenick", document.body);
-    setTimeout(timedMessageFetch, 1000);
-    
+    setTimeout(timedMessageFetch, 1000); 
 }
 
 class selectnickname extends XMLHttpRequest
@@ -18,9 +17,7 @@ class selectnickname extends XMLHttpRequest
         this.onreadystatechange = this.ajaxin;
         this.open("POST", target+ ".php", true);
         this.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        this.send("message=" + encodeURI(message));
-      
-   
+        this.send("message=" + encodeURI(message));   
     }
 
     ajaxin()
@@ -43,7 +40,6 @@ class selectnickname extends XMLHttpRequest
     }
 }
 
-
 class MyConnect extends XMLHttpRequest
 {
     constructor(sendcapsule, target, resulthandler)
@@ -58,43 +54,36 @@ class MyConnect extends XMLHttpRequest
     }
 
     ajaxin()
-    {
-        
-    if (this.readyState === 4)
-    {
-        if(this.status === 200)
+    {   
+        if (this.readyState === 4)
         {
-            let responsecapsule = null;
-            try
+            if(this.status === 200)
             {
-                responsecapsule = JSON.parse(this.responseText);
+                let responsecapsule = null;
+                try
+                {
+                    responsecapsule = JSON.parse(this.responseText);
+                }
+                catch(exception)
+                {
+                    alert("This is not JSON: " + this.responseText);
+                }
+                if (responsecapsule != null) this.handleResultsWith(responsecapsule);
             }
-            catch(exception)
+            else
             {
-                alert("This is not JSON: " + this.responseText);
+                alert("Whooopse... something failed");
             }
-            if (responsecapsule != null) this.handleResultsWith(responsecapsule);
         }
-        else
-        {
-            alert("Whooopse... something failed");
-        }
-    }
     }
 }
 
 function sendMessageB(xc,yc)
-{
-    
+{ 
     coordinate = {"xc" : xc, "yc": yc};
     var message = JSON.stringify(coordinate);
-  
-    
     let connect = new selectnickname(message, "sendmessageservice", document.body);
-
-   
  }
-
 
 function timedMessageFetch()
 {
@@ -104,17 +93,18 @@ function timedMessageFetch()
         let connect = new selectnickname("NOP", "getmessageservice", document.body);
         dd();        
         setTimeout(timedMessageFetch, 500);
-        
     }
 }
 
-
-
-
-
-
-
-
+function cc(nb, c, s)
+{
+    $(document).ready(function(){
+       $(nb).css("background-color",c);
+       $(nb).text(s);
+       $(nb).css("font-size", "60px");
+    });
+    sendMessageB(nb[2], nb[3]);
+}
 
 function dd()
 {
@@ -136,207 +126,54 @@ function dd()
             xc = txto[txto_l-5];
             yc = txto[txto_l-2];
             c = xc.toString() + yc.toString();
+            nb = '#b' + c;
+            cc (nb, 'red', 'O');
            }
-        else
-        {
-           xc = txto[txto_l-10];
-           yc = txto[txto_l-7];
-           c = xc.toString() + yc.toString(); 
-        }
-
-
-         switch (c)
-         {
-            case "11":
-                f11r();
-                break;
-
-            case "12":
-                f12r();
-                break;
-
-            case "13":
-                f13r();
-                break;
-
-            case "21":
-                f21r();
-                break;
-
-            case "22":
-                f22r();
-                break;
-
-            case "23":
-                f23r();
-                break;
-
-            case "31":
-                f31r();
-                break;
-
-            case "32":
-                f32r();
-                break;
-
-            case "33":
-                f33r();
-                break;
-
-            default:
-                 alert("Something is wrong");
-                 break;
+            else
+            {
+               xc = txto[txto_l-10];
+               yc = txto[txto_l-7];
+               c = xc.toString() + yc.toString(); 
+               nb = '#b' + c;
+               cc (nb, 'red', 'O');
             }
+        
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function rt()
 {
-    let tb1 = document.getElementById("xcoordinate");
-    let tb2 = document.getElementById("ycoordinate");
-    let elec = tb1.value + tb2.value;
-    
-    switch (elec){
-        case "11":
-            f11();
-            break;
-    
-        case "12":
-            f12();
-            break;
-        
-        case "13":
-            f13();
-            break;
-        
-        case "21":
-            f21();
-            break;
-    
-        case "22":
-            f22();
-            break;
-        
-        case "23":
-            f23();
-            break;
-            
-        case "31":
-            f31();
-            break;
-    
-        case "32":
-            f32();
-            break;
-        
-        case "33":
-            f33();
-            break;
-            
-        default:
-             alert("Your coordinates are wrong");
-            
+    if (document.getElementById("textbox").disabled == true )
+    {
+        let tb1 = document.getElementById("xcoordinate");
+        let tb2 = document.getElementById("ycoordinate");
+        let elec = tb1.value + tb2.value;
+        if (elec == "11" || elec == "12" || elec == "13" || elec == "21" || elec == "22" || elec == "23" || elec == "31" || elec == "32" || elec == "33")
+        {
+            let nb = "#b" + elec;
+            cc(nb, "green", "X");
+            ajaxOutForClickFireButton();
+        }
+        else
+        {
+            alert("Insert the cordinates in the textboxes or click a botton")
+        }
     }
-
-    ajaxOutForClickFireButton();
+    else
+    {
+        alert("Select your nickname!");
+    }
 }
 
-
-
-
-
-function f11 (){
-    document.getElementById('b11').style.backgroundColor = "green";
-    sendMessageB("1","1");
-}
-
-function f12 (){
-    document.getElementById('b12').style.backgroundColor = "green";
-    sendMessageB("1","2");
-}
-
-function f13 (){
-    document.getElementById('b13').style.backgroundColor = "green";
-    sendMessageB("1","3");
-}
-
-function f21 (){
-    document.getElementById('b21').style.backgroundColor = "green";
-    sendMessageB("2","1");
-}
-
-function f22 (){
-    document.getElementById('b22').style.backgroundColor = "green";
-    sendMessageB("2","2");
-}
-
-function f23 (){
-    document.getElementById('b23').style.backgroundColor = "green";
-    sendMessageB("2","3");
-}
-
-function f31 (){
-    document.getElementById('b31').style.backgroundColor = "green";
-    sendMessageB("3","1");
-}
-
-function f32 (){
-    document.getElementById('b32').style.backgroundColor = "green";
-    sendMessageB("3","2");
-}
-
-function f33 (){
-    document.getElementById('b33').style.backgroundColor = "green";
-    sendMessageB("3","3");
-}
-
-
-function f11r(){
-    document.getElementById('b11').style.backgroundColor = "red";
-}
-
-function f12r (){
-    document.getElementById('b12').style.backgroundColor = "red";
-}
-
-function f13r (){
-    document.getElementById('b13').style.backgroundColor = "red";
-}
-
-function f21r (){
-    document.getElementById('b21').style.backgroundColor = "red";
-}
-
-function f22r (){
-    document.getElementById('b22').style.backgroundColor = "red";
-}
-
-function f23r (){
-    document.getElementById('b23').style.backgroundColor = "red";
-}
-
-function f31r (){
-    document.getElementById('b31').style.backgroundColor = "red";
-}
-
-function f32r (){
-    document.getElementById('b32').style.backgroundColor = "red";
-}
-
-function f33r (){
-    document.getElementById('b33').style.backgroundColor = "red";
+function cc(nb, c, s)
+{
+    $(document).ready(function(){
+       $(nb).css("background-color",c);
+       $(nb).text(s);
+       $(nb).css("font-size", "60px");
+    });
+    if (c == 'green')
+    {
+    sendMessageB(nb[2], nb[3]);
+    }
 }

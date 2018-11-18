@@ -2,21 +2,21 @@ var firstCall = true;
 
 function ajaxOutForClickFireButton()
 {
-    let xcoord = document.getElementById("xcoordinate").value;
-    let ycoord = document.getElementById("ycoordinate").value;
-    let newCapsule = {
-        sendx: xcoord,
-        sendy: ycoord
-    };
-     let connect = new MyConnect(newCapsule, "ajajservice", fireButtonResponseHandler);
+    if (document.getElementById("textbox").disabled == true )
+    {
+        let xcoord = document.getElementById("xcoordinate").value;
+        let ycoord = document.getElementById("ycoordinate").value;
+        let newCapsule = {
+            sendx: xcoord,
+            sendy: ycoord
+        };
+         let connect = new MyConnect(newCapsule, "ajajservice", fireButtonResponseHandler);
+     }
+     else 
+     {
+         alert("Select your nickname!")
+     }
 }
-
-//var xdivobject = document.createElement("div");
-//xdivobject.innerHTML = "<br>Coordinate X: ";
-//var xdivtext = document.createTextNode("");
-//var ydivobject = document.createElement("div");
-//ydivobject.innerHTML = "Coordinate Y: ";
-//var ydivtext = document.createTextNode("");
 
 
 function fireButtonResponseHandler(capsule)
