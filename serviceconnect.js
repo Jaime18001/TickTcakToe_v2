@@ -189,12 +189,12 @@ function cc(nb, c, s)
         if((position[0][c1] == 1 && position[c1][c1] == 1 && position[2][c1] == 1) || (position[c1][0] == 1 && position[c1][1] == 1 && position[c1][2] == 1) || (position[0][0] == 1 && position[1][1] == 1 && position[2][2] == 1) || (position[0][2] == 1 && position[1][1] == 1 && position[2][0] == 1))
         {
             alert ("You win");
-            location.reload();
+            
         }
         else if((position[0][c1] == 2 && position[c1][c1] == 2 && position[2][c1] == 2) || (position[c1][0] == 2 && position[c1][1] == 2 && position[c1][2] == 2) || (position[0][0] == 2 && position[1][1] == 2 && position[2][2] == 2) || (position[0][2] == 2 && position[1][1] == 2 && position[2][0] == 2))
         {
             alert ("You lost");
-            location.reload();
+            
         }
         
     }
