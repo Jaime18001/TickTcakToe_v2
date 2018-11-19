@@ -1,3 +1,5 @@
+let position = [[0,0,0], [0,0,0], [0,0,0]];
+
 function setNick()
 {
     let nickname = document.getElementById("textbox").value;
@@ -5,7 +7,7 @@ function setNick()
     document.getElementById("dabutton").disabled = true;
     document.getElementById("textbox").disabled = true;
     let connect = new selectnickname(nickname, "savenick", document.body);
-    setTimeout(timedMessageFetch, 1000); 
+    setTimeout(timedMessageFetch, 750); 
 }
 
 class selectnickname extends XMLHttpRequest
@@ -92,7 +94,7 @@ function timedMessageFetch()
     {
         let connect = new selectnickname("NOP", "getmessageservice", document.body);
         dd();        
-        setTimeout(timedMessageFetch, 500);
+        setTimeout(timedMessageFetch, 750);
     }
 }
 
@@ -150,13 +152,14 @@ function rt()
         let elec = tb1.value + tb2.value;
         if (elec == "11" || elec == "12" || elec == "13" || elec == "21" || elec == "22" || elec == "23" || elec == "31" || elec == "32" || elec == "33")
         {
-            let nb = "#b" + elec;
-            cc(nb, "green", "X");
+            let nb = '#b' + elec;
+            console.log(nb);
+            cc(nb, 'green', 'X');
             ajaxOutForClickFireButton();
         }
         else
         {
-            alert("Insert the cordinates in the textboxes or click a botton")
+            alert("Insert the cordinates in the textboxes or click a botton");
         }
     }
     else
@@ -168,12 +171,32 @@ function rt()
 function cc(nb, c, s)
 {
     $(document).ready(function(){
-       $(nb).css("background-color",c);
+       $(nb).css('background-color', c);
        $(nb).text(s);
-       $(nb).css("font-size", "60px");
+       $(nb).css('font-size', '60px');
     });
-    if (c == 'green')
+    
+     position[nb[2] - 1][nb[3] - 1] = 2;
+    if (c === 'green')
     {
-    sendMessageB(nb[2], nb[3]);
+        sendMessageB(nb[2], nb[3]);
+        
+        position[nb[2] - 1][nb[3] - 1] = 1;
+    }
+    
+    for (c1 = 0; c1 < 3; c1++)
+    {
+        if((position[0][c1] == 1 && position[c1][c1] == 1 && position[2][c1] == 1) || (position[c1][0] == 1 && position[c1][1] == 1 && position[c1][2] == 1) || (position[0][0] == 1 && position[1][1] == 1 && position[2][2] == 1) || (position[0][2] == 1 && position[1][1] == 1 && position[2][0] == 1))
+        {
+            alert ("You win");
+            location.reload();
+        }
+        else if((position[0][c1] == 2 && position[c1][c1] == 2 && position[2][c1] == 2) || (position[c1][0] == 2 && position[c1][1] == 2 && position[c1][2] == 2) || (position[0][0] == 2 && position[1][1] == 2 && position[2][2] == 2) || (position[0][2] == 2 && position[1][1] == 2 && position[2][0] == 2))
+        {
+            alert ("You lost");
+            location.reload();
+        }
+        
     }
 }
+
