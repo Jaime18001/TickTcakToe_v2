@@ -182,16 +182,17 @@ function cc(nb, c, s)
         sendMessageB(nb[2], nb[3]);
         
         position[nb[2] - 1][nb[3] - 1] = 1;
+        
     }
     
     for (c1 = 0; c1 < 3; c1++)
     {
-        if((position[0][c1] == 1 && position[c1][c1] == 1 && position[2][c1] == 1) || (position[c1][0] == 1 && position[c1][1] == 1 && position[c1][2] == 1) || (position[0][0] == 1 && position[1][1] == 1 && position[2][2] == 1) || (position[0][2] == 1 && position[1][1] == 1 && position[2][0] == 1))
+        if ((position[0][c1] == 1 && position[1][c1] == 1 && position[2][c1] == 1) || (position[c1][0] == 1 && position[c1][1] == 1 && position[c1][2] == 1) || (position[0][0] == 1 && position[1][1] == 1 && position[2][2] == 1) || (position[0][2] == 1 && position[1][1] == 1 && position[2][0] == 1))
         {
             alert ("You win");
             
         }
-        else if((position[0][c1] == 2 && position[c1][c1] == 2 && position[2][c1] == 2) || (position[c1][0] == 2 && position[c1][1] == 2 && position[c1][2] == 2) || (position[0][0] == 2 && position[1][1] == 2 && position[2][2] == 2) || (position[0][2] == 2 && position[1][1] == 2 && position[2][0] == 2))
+        else if((position[0][c1] == 2 && position[1][c1] == 2 && position[2][c1] == 2) || (position[c1][0] == 2 && position[c1][1] == 2 && position[c1][2] == 2) || (position[0][0] == 2 && position[1][1] == 2 && position[2][2] == 2) || (position[0][2] == 2 && position[1][1] == 2 && position[2][0] == 2))
         {
             alert ("You lost");
             
